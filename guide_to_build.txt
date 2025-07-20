@@ -1,0 +1,86 @@
+REAL ESTATE LISTING PLATFORM - BUILD GUIDE
+
+PROJECT OVERVIEW:
+Comprehensive real estate platform with property listings, advanced search filters, map integration, and favorite system.
+
+TECH STACK:
+- Frontend: React.js with TypeScript
+- Backend: Python Flask
+- Database: SQLite
+- Maps: Google Maps API
+- Image Storage: Local storage
+- Authentication: JWT
+- UI Framework: Material-UI or Chakra UI
+
+KEY FEATURES TO IMPLEMENT:
+1. Property Listings
+   - Property search with filters (price, location, type, bedrooms)
+   - Property details with photo galleries
+   - Contact forms for inquiries
+   - Property comparison tool
+   - Virtual tour integration
+
+2. Advanced Search
+   - Location-based search with map
+   - Price range filters
+   - Property type filters
+   - Amenities filters
+   - Save search preferences
+
+3. Map Integration
+   - Interactive property map
+   - Property markers with info windows
+   - Draw area selection
+   - Route planning to properties
+   - Neighborhood information
+
+4. User Features
+   - User registration and profiles
+   - Favorite properties list
+   - Search history
+   - Property alerts
+   - Contact agent system
+
+5. Database Schema:
+   - Users (id, email, name, phone, role)
+   - Properties (id, title, description, price, address, coordinates, type, bedrooms, bathrooms, area)
+   - Property_images (id, property_id, image_url, is_primary)
+   - Favorites (id, user_id, property_id, created_at)
+   - Inquiries (id, property_id, user_id, message, created_at)
+   - Amenities (id, name, category)
+
+QUICK BUILD STEPS:
+1. Setup React project: npx create-react-app real-estate --template typescript
+2. Setup Python Flask backend: pip install flask flask-cors flask-sqlalchemy
+3. Integrate Google Maps API for property mapping
+4. Implement property search with filters
+5. Create property detail pages with image galleries
+6. Build favorite system and user profiles
+7. Implement contact forms and inquiry system
+8. Add advanced search with saved preferences
+9. Create responsive design for mobile
+10. Add property comparison feature
+
+CRITICAL COMPONENTS:
+- PropertyCard with image gallery and details
+- SearchFilters with advanced options
+- InteractiveMap with property markers
+- PropertyDetail with virtual tour
+- FavoriteButton with user preferences
+- ContactForm with inquiry tracking
+
+DEMO SCREENSHOTS NEEDED:
+1. Homepage with property listings
+2. Property detail page with gallery
+3. Map view with property markers
+4. Advanced search filters
+5. User dashboard with favorites
+
+DEPLOYMENT:
+- Frontend: Vercel/Netlify
+- Backend: Railway/Render
+- Database: SQLite (local) + Cloud sync
+- Images: Local storage + Cloudinary
+- Maps: Google Maps API
+
+ESTIMATED TIME: 1 day with AI assistance 
