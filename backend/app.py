@@ -20,6 +20,25 @@ jwt = JWTManager(app)
 CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
+# Global flag to track initialization
+_initialized = False
+
+def initialize_database():
+    with app.app_context():
+        db.create_all()
+        
+        # Create sample data if database is empty
+        if not User.query.first():
+            from sample_data import create_sample_data
+            create_sample_data()
+
+@app.before_request
+def ensure_initialized():
+    global _initialized
+    if not _initialized:
+        initialize_database()
+        _initialized = True
+
 # Authentication routes
 @app.route('/api/auth/register', methods=['POST'])
 def register():
@@ -507,12 +526,5 @@ def handle_join_user_room(data):
     print(f'Client joined room: {room}')
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-        
-        # Create sample data if database is empty
-        if not User.query.first():
-            from sample_data import create_sample_data
-            create_sample_data()
-    
+    initialize_database()
     socketio.run(app, debug=True, host='0.0.0.0', port=5000, allow_unsafe_werkzeug=True) 

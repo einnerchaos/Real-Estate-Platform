@@ -1,6 +1,11 @@
 {
+  "name": "real-estate-platform",
   "version": 2,
   "builds": [
+    {
+      "src": "backend/app.py",
+      "use": "@vercel/python"
+    },
     {
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
@@ -11,8 +16,12 @@
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "/backend/app.py"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/frontend/index.html"
+      "dest": "/frontend/$1"
     }
   ]
 } 
